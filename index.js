@@ -1,18 +1,24 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  // Create a Set to store numbers we've checked
+  let seenNumbers = new Set();
+
+  // Loop through each number in the array
+  for (let num of array) {
+    // Calculate the complement number that would add up to the target sum
+    const complement = target - num;
+
+    // If the complement exists in our Set, we've found a pair that sums up to the target
+    if (seenNumbers.has(complement)) {
+      return true;
+    }
+
+    // If not, add this number to the Set and continue
+    seenNumbers.add(num);
+  }
+
+  // If we finish the loop without finding a pair, return false
+  return false;
 }
-
-/* 
-  Write the Big O time complexity of your function here
-*/
-
-/* 
-  Add your pseudocode here
-*/
-
-/*
-  Add written explanation of your solution here
-*/
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
